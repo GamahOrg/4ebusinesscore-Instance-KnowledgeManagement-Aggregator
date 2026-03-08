@@ -1,0 +1,10 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "KnowledgeManagement.Aggregator.Protos";
+
+import "google/protobuf/empty.proto";
+import "Protos/Challenges/ChallengeProtoMessages.proto";
+
+service KnowlageAggProtoService {
+	rpc GetKnowlageAggControllerAndActionName (google.protobuf.Empty) returns (GetControllerAndActionNameResponse);
+}

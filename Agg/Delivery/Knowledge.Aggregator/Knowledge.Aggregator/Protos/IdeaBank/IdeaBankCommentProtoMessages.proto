@@ -1,0 +1,42 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "IdeaBank.API.Protos";
+import "google/protobuf/empty.proto";
+import "google/protobuf/wrappers.proto";
+
+message CommentsForIdeaBanks 
+{
+	google.protobuf.StringValue Id = 1;
+    google.protobuf.StringValue CommentText = 2;
+    google.protobuf.StringValue IdeaBankId = 3;
+    google.protobuf.StringValue ParentCommentId = 4;
+    google.protobuf.StringValue CreatedBy = 5;
+    google.protobuf.StringValue CreatedOn = 6;
+    repeated CommentsForIdeaBanks Replies = 7;
+    repeated CommentsLikeForIdeaBanksProto CommentLikes = 8;
+	 bool IsLiked =9;
+      bool IsDisliked=10;
+}
+
+message RequestAllCommentsForIdeaBanks
+{
+	string Id = 1;
+	int32 PageIndex = 2;
+	int32 PageSize = 3;
+}
+
+message ResponseAllCommentsForIdeaBanks
+{
+    repeated CommentsForIdeaBanks Comment = 1;
+    int32 PageIndex = 2;
+	int32 TotalPages = 3;
+	int32 TotalItems = 4;
+	int32 PageSize = 5;
+}
+
+message CommentsLikeForIdeaBanksProto
+{
+	google.protobuf.StringValue Id = 1;
+	int32 LikeStatus = 2;
+	google.protobuf.StringValue CommentId = 3;
+}

@@ -1,0 +1,33 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "KnowledgeManagement.Aggregator.Protos";
+
+message BlogCommentProto 
+{
+	string Id = 1;
+    string Body = 2;
+    string BlogId = 3;
+    string ParentId = 4;
+    string CreatedBy = 5;
+    string CreatedOn = 6;
+    repeated BlogCommentProto Replies = 7;
+    repeated BlogCommentLikeProto CommentLikes = 8;
+    bool IsDisliked = 9;
+	bool IsLiked = 10; 
+}
+
+message ResponseAllBlogComments
+{
+    repeated BlogCommentProto Comment = 1;
+    int32 PageIndex = 2;
+	int32 TotalPages = 3;
+	int32 TotalItems = 4;
+	int32 PageSize = 5;
+}
+
+message BlogCommentLikeProto
+{
+	string Id = 1;
+	int32 LikeStatus = 2;
+	string CommentId = 3;
+}

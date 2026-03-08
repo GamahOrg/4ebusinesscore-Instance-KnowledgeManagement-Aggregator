@@ -1,0 +1,150 @@
+syntax = "proto3";
+
+option csharp_namespace = "IdeaBank.Application.Proto";
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/wrappers.proto";
+service IdeaBankCommentsProtoService {
+	rpc GetAllIdeaBankComments (RequestAllIdeaBankComments) returns (ResponseAllIdeaBankComments);
+	rpc GetIdeaBankControllerAndActionName (google.protobuf.Empty)returns (GetIdeaBankControllerAndActionNameResponse);
+	rpc GetAllRequestedIdeas (RequestAllRequestedIdeas) returns (ResponseAllIdeas);
+	rpc GetRequestedIdeaById (RequestIdeaById) returns (ResponseIdeaById);
+    rpc GetIdeaBankById (RequestGetIdeaBankById) returns (ResponseGetIdeaBankById);
+	rpc GetAllIdeaBanks (RequestGetAllIdeaBanks) returns (ResponseGetAllIdeaBanks);
+}
+
+message RequestAllIdeaBankComments
+{
+	string Id = 1;
+	int32 PageIndex = 2;
+	int32 PageSize = 3;
+}
+
+message ResponseAllIdeaBankComments 
+{
+	repeated IdeaBankCommentsProto ResponseIdeaBankComments = 1;
+	int32 PageIndex = 2;
+	int32 TotalPages = 3;
+	int32 TotalItems = 4;
+	int32 PageSize = 5;
+}
+
+message IdeaBankCommentsProto
+{
+	string Id = 1;
+	string CommentText = 2;
+	string CreatedOn = 3;
+	string CreatedBy = 4;
+	string IdeaBankId = 5;
+	string ParentCommentId = 6;
+	repeated IdeaBankCommentsProto IdeaBankComments = 7;
+	int32 CommentLikesCount = 8;
+}
+
+message KnowledgeIdeaBankCommentLikeProto
+{
+	string Id = 1;
+	int32 LikeStatus = 2;
+	string CommentId = 3;
+}
+
+//GET CONTROLLER AND ACTION NAMES
+message GetIdeaBankControllerAndActionNameResponse{
+	repeated IdeaBankModuleInfo ModuleInfo =1;
+}
+message IdeaBankModuleInfo {
+	string MethodVerd =1;
+    string Path =2;
+    string ControllerName =3;
+    string ActionName =4;
+    int64 key =5;
+}
+
+//GET ALL REQUESTED IDEAS
+message RequestAllRequestedIdeas
+{
+	int32 PageIndex = 1;
+	int32 PageSize = 2;
+	int32 RequestStage = 3;
+}
+
+message ResponseAllIdeas
+{
+	repeated IdeaProto Idea = 1;
+	int32 PageIndex = 2;
+	int32 TotalPages = 3;
+	int32 TotalItems = 4;
+	int32 PageSize = 5;
+}
+message RequestIdeaById 
+{
+	string IdeaId = 1;
+}
+
+message ResponseIdeaById
+{
+	IdeaProto Idea = 1;
+}
+
+message IdeaProto
+{
+	google.protobuf.StringValue  Id = 1;
+	google.protobuf.StringValue  Title = 2;
+	google.protobuf.StringValue  Description = 3;
+	google.protobuf.StringValue  CreatedBy = 4;
+	google.protobuf.StringValue  CreatedOn = 5;
+	google.protobuf.StringValue  Notes = 9;
+	int32 RequestStage = 10;
+   repeated google.protobuf.StringValue IdeaAttachments=11;
+   bool IsPublished =12;
+	int32 Lk_InputTypeId =13;
+	string Lk_InputTypeNameAr =14;
+	string Lk_InputTypeNameEn =15;
+	int32 IdeaCategory =16;
+}
+
+message RequestGetAllIdeaBanks
+{
+    int32 PageIndex = 1;
+	int32 PageSize = 2;
+}
+message ResponseGetAllIdeaBanks
+{
+    repeated IdeabankProtoModel Ideabanks =1;
+    int32 PageIndex = 2;
+	int32 TotalPages = 3;
+	int32 TotalItems = 4;
+	int32 PageSize = 5;
+}
+message RequestGetIdeaBankById 
+{
+    string Id =1;
+}
+message ResponseGetIdeaBankById
+{
+    IdeabankProtoModel IdeabankProtoModel =1;
+}
+message IdeabankProtoModel
+{
+	string Id =1;
+    int32 IdeaCategory =2;
+    string Title =3;
+    string Description  =4;
+    string CreatedOn =5;
+    string CreatedBy =6;
+    bool IsLikedByLoggedInUser=7;
+    bool IsDisLikedByLoggedInUser =8;
+    int32 LikesCount =9;
+    int32 DislikesCount =10;
+    int32 CommentsCount =11;
+    double Rates =12;
+	repeated IdeaAttachmentsProtoModel IdeaAttachments =13;
+	int32 IdeaViews =14;
+	int32 Lk_InputTypeId =15;
+	string Lk_InputTypeNameAr =16;
+	string Lk_InputTypeNameEn =17;
+}
+message IdeaAttachmentsProtoModel
+{
+    string Path=1;
+}

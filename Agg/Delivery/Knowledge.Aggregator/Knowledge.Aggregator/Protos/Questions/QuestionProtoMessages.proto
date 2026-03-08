@@ -1,0 +1,89 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "AskExperts.API.Protos";
+import "Protos/QuestionComments/QuestionCommentProtoMessages.proto";
+
+//GET ALL Questions
+message RequestAllQuestions
+{
+	int32 PageIndex = 1;
+	int32 PageSize = 2;
+	string SearchTerm = 3;
+}
+
+message ResponseAllQuestions
+{
+	repeated QuestionProto Question = 1;
+	int32 PageIndex = 2;
+	int32 TotalPages = 3;
+	int32 TotalItems = 4;
+	int32 PageSize = 5;
+}
+
+//GET Question BY ID 
+message RequestQuestionById 
+{
+	string QuestionId = 1;
+}
+
+message RequestQuestionByIdPaginated
+{
+	string QuestionId = 1;
+	int32 PageIndex = 2;
+	int32 PageSize = 3;
+}
+
+message ResponseQuestionById
+{
+	QuestionProto Question = 1;
+}
+
+//GET ALL REQUESTED Question
+message RequestAllRequestedQuestions
+{
+	int32 PageIndex = 1;
+	int32 PageSize = 2;
+	int32 RequestStage = 3;
+}
+
+//GET CONTROLLER AND ACTION NAMES
+message GetQuestionControllerAndActionNameResponse{
+	repeated QuestionModuleInfo ModuleInfo =1;
+}
+message QuestionModuleInfo {
+	string MethodVerd =1;
+    string Path =2;
+    string ControllerName =3;
+    string ActionName =4;
+    int64 key =5;
+}
+
+/*PROTO TYPES*/
+message QuestionProto
+{
+	string Id = 1;
+	string Body = 2;
+	string CreatedBy = 3;
+	string CreatedOn = 4;
+	repeated QuestionCommentProto Comments = 5;
+	string Notes = 6;
+	int32 RequestStage = 7;
+	int32 QuestionStatus = 8;
+	string SpecializationId = 9;
+	string SpecializationNameAr=10;
+    string SpecializationNameEn=11;
+	int32 Type =12;
+	repeated expertInfoProto Experts =13;
+}
+message expertInfoProto
+{
+    string ExpertId =1;
+	string ExpertEmail =2;
+	string ExpertName =3;
+}
+message RequestGetQuestionsByExpertId
+{
+	string ExpertId = 1;
+	int32 PageIndex = 2;
+	int32 PageSize = 3;
+}

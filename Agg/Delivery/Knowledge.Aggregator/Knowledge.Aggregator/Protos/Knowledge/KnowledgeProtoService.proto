@@ -1,0 +1,37 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "Knowledge.API.Protos";
+
+
+service KnowledgeProtoService {
+	rpc GetAllPrivateKnowledges (RequestGetAllPrivateKnowledge) returns (ResponseGetAllPrivateKnowledge);
+}
+message RequestGetAllPrivateKnowledge
+{
+     int32 PageNumber= 1;
+	int32 PageSize = 2;
+    string SearchTerm =3;
+   //  IdProtoModel OrgIds =4; 
+}
+message IdProtoModel
+{
+  repeated string Id =1;
+}
+message ResponseGetAllPrivateKnowledge
+{
+    repeated PrivateKnowledgeProtoModel PrivateKnowles =1;
+	 int32 PageIndex = 2;
+    int32 TotalPages = 3;
+    int32 TotalItems = 4;
+    int32 PageSize = 5;
+}
+message PrivateKnowledgeProtoModel
+{
+    string Id =1;
+    string Name =2;
+    int32 KnowledgeType =3;
+    string Icon =4;
+    string Color =5;
+ //   string CategoryId =6;
+    repeated string OrgHierarchyId=6;
+}

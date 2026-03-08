@@ -1,0 +1,24 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "Challenges.API.Protos";
+
+message CommentProto 
+{
+	string Id = 1;
+    string Description = 2;
+    string ChallengeId = 3;
+    string CommentAttachment = 4;
+    string ParentId = 5;
+    string CreatedBy = 6;
+    string CreatedOn = 7;
+    repeated CommentProto Replies = 8;
+}
+
+message ResponseAllChallengeComments
+{
+    repeated CommentProto Comment = 1;
+    int32 PageIndex = 2;
+	int32 TotalPages = 3;
+	int32 TotalItems = 4;
+	int32 PageSize = 5;
+}

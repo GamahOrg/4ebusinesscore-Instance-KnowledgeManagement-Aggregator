@@ -1,0 +1,51 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "Knowledge.API.Protos";
+
+import "google/protobuf/wrappers.proto";
+
+service IndexProtoService 
+{
+	rpc GetUserAndIOrgIndicators (RequestGetUserAndIOrgIndicators) returns (ResponseGetUserAndIOrgIndicators);
+}
+message RequestGetUserAndIOrgIndicators {
+
+}
+
+message ResponseGetUserAndIOrgIndicators 
+{
+	 UserAndIOrgIndicatorProtoModel model =1 ; 
+}
+message UserAndIOrgIndicatorProtoModel 
+{
+	int32 CountOfInteractiveUsers=1;
+    repeated GetSubKnowledgeInfoProto GetSubKnowledgeInfoProto =2;
+    repeated GetKnowledgeInfoProto GetKnowledgeInfoProto =3;
+    repeated UserInfoProto UserInfoProto =4;
+    repeated OrgInfoProto OrgInfoProto =5;
+}
+
+message GetSubKnowledgeInfoProto
+{
+     google.protobuf.StringValue SubKnowledgeId =1;
+     google.protobuf.StringValue SubKnowledgeTitle =2;
+     int32 CountOfOrgs =3; //عدد المؤسسات المرتبطه مع كل محتوى 
+     int32 CountOfUsers =4; //عدد مستخدمين  مع كل محتوى
+ }
+ message GetKnowledgeInfoProto
+ {
+     google.protobuf.StringValue KnowlegeId =1;
+     google.protobuf.StringValue KnowlegeName =2;
+     int32 type =3;
+     int32 CountOfOrgs =4;
+ }
+ message OrgInfoProto
+ {
+     google.protobuf.StringValue OrgId =1;
+     int32 CountOfSubKnowledges =2;
+ }
+ message UserInfoProto
+ {
+     google.protobuf.StringValue UserId =1;
+     int32 CountOfContributions =2; // المساهمات (عدد المشاهدات + عدد التقيمات+عدد الاعجابات + المفضلات
+ }

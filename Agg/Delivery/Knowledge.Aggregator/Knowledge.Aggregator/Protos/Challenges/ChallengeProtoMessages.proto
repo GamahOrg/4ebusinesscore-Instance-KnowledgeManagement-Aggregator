@@ -1,0 +1,83 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "Challenges.API.Protos";
+import "Protos/Comments/CommentProtoMessages.proto";
+
+//GET ALL CHALLENGES
+message RequestAllChallenges
+{
+	int32 PageIndex = 1;
+	int32 PageSize = 2;
+	string SearchTerm = 3;
+}
+
+message ResponseAllChallenges 
+{
+	repeated ChallengeProto Challenge = 1;
+	int32 PageIndex = 2;
+	int32 TotalPages = 3;
+	int32 TotalItems = 4;
+	int32 PageSize = 5;
+}
+
+//GET CHALLENGE BY ID 
+message RequestChallengeById 
+{
+	string ChallengeId = 1;
+}
+
+message ResponseChallengeById
+{
+	ChallengeProto Challenge = 1;
+}
+
+message RequestChallengeByIdPaginated
+{
+	string ChallengeId = 1;
+	int32 PageIndex = 2;
+	int32 PageSize = 3;
+}
+
+//GET ALL REQUESTED CHALLNEGES
+message RequestAllRequestedChallenges
+{
+	int32 PageIndex = 1;
+	int32 PageSize = 2;
+	int32 RequestStage = 3;
+}
+
+//GET CONTROLLER AND ACTION NAMES
+message GetControllerAndActionNameResponse{
+	repeated ModulaInfo ModulaInfo =1;
+}
+message ModulaInfo {
+	string MethodVerd =1;
+    string Path =2;
+    string ControllerName =3;
+    string ActionName =4;
+    int64 key =5;
+}
+
+/*PROTO TYPES*/
+message ChallengeProto
+{
+	string Id = 1;
+	string LK_ChallengeCategoryId = 2;
+	string LK_ChallengeCategoryNameAr = 3;
+	string LK_ChallengeCategoryNameEn = 4;
+	string Title = 5;
+	string Description = 6;
+	string CreatedBy = 7;
+	string CreatedOn = 8;
+	repeated CommentProto ChallengeComments = 9;
+	repeated AttachmentProto ChallengeAttachments = 10;
+	string Notes = 11;
+	int32 RequestStage = 12;
+}
+
+message AttachmentProto
+{
+	string Id = 1;
+	string ChallengeId = 2;
+	string Path = 3;
+}

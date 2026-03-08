@@ -1,0 +1,9 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "IdeaBank.API.Protos";
+
+import "Protos/IdeaBank/IdeaBankCommentProtoMessages.proto";
+
+service GetAllCommentsForIdeaBanksProtoService {
+	rpc GetCommentsForIdeaBanksById (RequestAllCommentsForIdeaBanks) returns (ResponseAllCommentsForIdeaBanks);
+}

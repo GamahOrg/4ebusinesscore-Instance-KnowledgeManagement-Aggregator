@@ -1,0 +1,14 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "Challenges.API.Protos";
+
+import "google/protobuf/empty.proto";
+import "Protos/Challenges/ChallengeProtoMessages.proto";
+
+service ChallengeProtoService {
+	rpc GetAllChallenges (RequestAllChallenges) returns (ResponseAllChallenges);
+	rpc GetChallengeById (RequestChallengeById) returns (ResponseChallengeById);
+	rpc GetAllRequestedChallenges (RequestAllRequestedChallenges) returns (ResponseAllChallenges);
+	rpc GetRequestedChallengeById (RequestChallengeById) returns (ResponseChallengeById);
+	rpc GetChallengesControllerAndActionName (google.protobuf.Empty) returns (GetControllerAndActionNameResponse);
+}
