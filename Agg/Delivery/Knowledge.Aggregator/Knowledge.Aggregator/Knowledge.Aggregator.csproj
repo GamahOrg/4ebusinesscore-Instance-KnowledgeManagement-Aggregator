@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.21.0" />
+    <PackageReference Include="Rega.Qimah.PermessionGroup" Version="1.0.4" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
   </ItemGroup>
 
@@ -29,11 +30,6 @@
     <PackageReference Include="AutoMapper" Version="12.0.1" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
 
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="MicroBlocks.App">
-      <HintPath>Utilities\bins\MicroBlocks.App.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Protobuf Include="Protos\IdeaBank\IdeaBankCommentProtoMessages.proto" GrpcServices="Client" />

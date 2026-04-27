@@ -1,10 +1,9 @@
-using _4EPlatform.PermissionsGroupingChecker;
-using _4EPlatform.PremessionRegister;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.Extensions.FileProviders;
 using Serilog;
 using System.Net;
 using System.Reflection;
+using Rega.Qimah.PermessionGroup;
 
 var builder = WebApplication.CreateBuilder(args);
 
