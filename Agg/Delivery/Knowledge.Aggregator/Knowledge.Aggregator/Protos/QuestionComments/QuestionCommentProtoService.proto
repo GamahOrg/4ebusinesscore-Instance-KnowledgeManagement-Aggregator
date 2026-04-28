@@ -1,0 +1,10 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "AskExperts.API.Protos";
+
+import "Protos/Questions/QuestionProtoMessages.proto";
+import "Protos/QuestionComments/QuestionCommentProtoMessages.proto";
+
+service QuestionCommentProtoService {
+	rpc GetCommentsByQuestionId (RequestQuestionByIdPaginated) returns (ResponseAllQuestionComments);
+}

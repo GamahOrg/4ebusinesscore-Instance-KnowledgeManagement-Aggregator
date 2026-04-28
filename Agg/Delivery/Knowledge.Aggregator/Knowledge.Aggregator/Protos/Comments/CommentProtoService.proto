@@ -1,0 +1,10 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "Challenges.API.Protos";
+
+import "Protos/Challenges/ChallengeProtoMessages.proto";
+import "Protos/Comments/CommentProtoMessages.proto";
+
+service CommentProtoService {
+	rpc GetCommentsByChallengeId (RequestChallengeByIdPaginated) returns (ResponseAllChallengeComments);
+}

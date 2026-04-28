@@ -1,0 +1,24 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "AskExperts.API.Protos";
+
+message QuestionCommentProto 
+{
+	string Id = 1;
+    string Body = 2;
+    string QuestionId = 3;
+    string ParentId = 4;
+    string CreatedBy = 5;
+    string CreatedOn = 6;
+    repeated QuestionCommentProto Replies = 7;
+    string Attachment = 8;
+}
+
+message ResponseAllQuestionComments
+{
+    repeated QuestionCommentProto Comment = 1;
+    int32 PageIndex = 2;
+	int32 TotalPages = 3;
+	int32 TotalItems = 4;
+	int32 PageSize = 5;
+}

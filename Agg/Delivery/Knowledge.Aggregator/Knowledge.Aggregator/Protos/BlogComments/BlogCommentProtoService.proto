@@ -1,0 +1,10 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "KnowledgeManagement.Aggregator.Protos";
+
+import "Protos/Blogs/BlogProtoMessages.proto";
+import "Protos/BlogComments/BlogCommentProtoMessages.proto";
+
+service BlogCommentProtoService {
+	rpc GetCommentsByBlogId (RequestBlogByIdPaginated) returns (ResponseAllBlogComments);
+}

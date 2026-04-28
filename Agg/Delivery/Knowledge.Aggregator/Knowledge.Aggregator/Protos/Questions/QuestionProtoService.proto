@@ -1,0 +1,18 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "AskExperts.API.Protos";
+
+import "google/protobuf/empty.proto";
+import "Protos/Questions/QuestionProtoMessages.proto";
+
+service QuestionProtoService {
+	rpc GetAllQuestions (RequestAllQuestions) returns (ResponseAllQuestions);
+	rpc GetQuestionById (RequestQuestionById) returns (ResponseQuestionById);
+	rpc GetAllRequestedQuestions (RequestAllRequestedQuestions) returns (ResponseAllQuestions);
+	rpc GetRequestedQuestionById (RequestQuestionById) returns (ResponseQuestionById);
+	rpc GetQuestionControllerAndActionName (google.protobuf.Empty)returns (GetQuestionControllerAndActionNameResponse);
+	rpc GetAllMyQuestions (RequestAllQuestions) returns (ResponseAllQuestions);
+	rpc IncomingQuestions (RequestAllQuestions) returns (ResponseAllQuestions);
+	rpc OutGoingQuestions (RequestAllQuestions) returns (ResponseAllQuestions);
+	rpc GetQuestionsByExpertId (RequestGetQuestionsByExpertId) returns (ResponseAllQuestions);
+}

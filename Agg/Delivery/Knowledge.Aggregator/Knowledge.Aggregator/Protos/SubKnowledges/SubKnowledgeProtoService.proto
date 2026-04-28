@@ -1,0 +1,12 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "Knowledge.API.Protos";
+
+import "google/protobuf/empty.proto";
+import "Protos/SubKnowledges/SubKnowledgeProtoMessages.proto";
+
+service SubKnowledgeProtoService {
+	rpc GetAllSubKnowledgesByKnowledgeId (RequestAllSubKnowledge) returns (ResponseAllSubKnowledge);
+	rpc GetSubKnowledgesById (RequestSubKnowledgeById) returns (ResponseSubKnowledgeById);
+	rpc GetKnowledgeControllerAndActionName (google.protobuf.Empty)returns (GetKnowledgeControllerAndActionNameResponse);
+}

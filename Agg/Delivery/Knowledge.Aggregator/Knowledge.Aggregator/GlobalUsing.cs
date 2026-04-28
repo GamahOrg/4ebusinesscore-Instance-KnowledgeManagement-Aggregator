@@ -31,3 +31,10 @@ global using KnowledgeManagement.Aggregator.Dtos.SubKnowledges;
 global using IdeaBank.Application.Proto;
 global using KnowledgeManagement.Aggregator.Dtos.IdeaBank;
 global using AskExperts.API.Protos;
+global using Microsoft.AspNetCore.Builder;
+global using Microsoft.Extensions.Hosting;
+global using Microsoft.Extensions.Configuration;
+global using Microsoft.Extensions.DependencyInjection;
+global using Microsoft.Extensions.Logging;
+global using Microsoft.AspNetCore.Http;
+

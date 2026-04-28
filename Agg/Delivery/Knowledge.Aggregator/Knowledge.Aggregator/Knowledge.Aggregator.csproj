@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.21.0" />
+    <PackageReference Include="Rega.Qimah.PermessionGroup" Version="1.0.4" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
   </ItemGroup>
 
@@ -31,12 +32,30 @@
 
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="MicroBlocks.App">
-      <HintPath>Utilities\bins\MicroBlocks.App.dll</HintPath>
-    </Reference>
-    <Reference Include="MicroBlocks.KnowlegeAggService">
-      <HintPath>Utilities\bins\MicroBlocks.KnowlegeAggService.dll</HintPath>
-    </Reference>
+    <Protobuf Include="Protos\IdeaBank\IdeaBankCommentProtoMessages.proto" GrpcServices="Client" />
   </ItemGroup>
-
+  <ItemGroup>
+    <Protobuf Include="Protos\Aggregator\KnowlageAggProtoService.proto" GrpcServices="Server" />
+    <Protobuf Include="Protos\BlogComments\BlogCommentProtoMessages.proto" GrpcServices="Client" />
+    <Protobuf Include="Protos\BlogComments\BlogCommentProtoService.proto" GrpcServices="Client" />
+    <Protobuf Include="Protos\Blogs\BlogProtoMessages.proto" GrpcServices="None" />
+    <Protobuf Include="Protos\Blogs\BlogProtoService.proto" GrpcServices="Both" />
+    <Protobuf Include="Protos\Challenges\ChallengeProtoMessages.proto" GrpcServices="None" />
+    <Protobuf Include="Protos\Challenges\ChallengeProtoService.proto" GrpcServices="Both" />
+    <Protobuf Include="Protos\Comments\CommentProtoMessages.proto" GrpcServices="Client" />
+    <Protobuf Include="Protos\Comments\CommentProtoService.proto" GrpcServices="Client" />
+    <Protobuf Include="Protos\IdeaBank\IdeaBankCommentProtoService.proto" GrpcServices="Client" />
+    <Protobuf Include="Protos\Knowledge\Index\Index.proto" GrpcServices="Client" />
+    <Protobuf Include="Protos\Orgs\OrgMembersProto.proto" GrpcServices="Client" />
+    <Protobuf Include="Protos\Orgs\OrgProto.proto" GrpcServices="Client" />
+    <Protobuf Include="Protos\QuestionComments\QuestionCommentProtoMessages.proto" GrpcServices="Client" />
+    <Protobuf Include="Protos\QuestionComments\QuestionCommentProtoService.proto" GrpcServices="Client" />
+    <Protobuf Include="Protos\Questions\QuestionProtoMessages.proto" GrpcServices="None" />
+    <Protobuf Include="Protos\Questions\QuestionProtoService.proto" />
+    <Protobuf Include="Protos\SubKnowledges\SubKnowledgeProtoMessages.proto" GrpcServices="None" />
+    <Protobuf Include="Protos\SubKnowledges\SubKnowledgeProtoService.proto" GrpcServices="Both" />
+    <Protobuf Include="Protos\IdeaBankComments\IdeaBank.proto" />
+    <Protobuf Include="Protos\Users\UserProto.proto" GrpcServices="Client" />
+    <Protobuf Include="Protos\Knowledge\KnowledgeProtoService.proto" GrpcServices="Client" />
+  </ItemGroup>
 </Project>

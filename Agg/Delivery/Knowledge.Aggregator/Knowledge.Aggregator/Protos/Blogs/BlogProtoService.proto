@@ -1,0 +1,14 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "KnowledgeManagement.Aggregator.Protos";
+
+import "google/protobuf/empty.proto";
+import "Protos/Blogs/BlogProtoMessages.proto";
+
+service BlogProtoService {
+	rpc GetAllBlogs (RequestAllBlogs) returns (ResponseAllBlogs);
+	rpc GetBlogById (RequestBlogById) returns (ResponseBlogById);
+	rpc GetAllRequestedBlogs (RequestAllRequestedBlogs) returns (ResponseAllBlogs);
+	rpc GetRequestedBlogById (RequestBlogById) returns (ResponseBlogById);
+	rpc GetBlogControllerAndActionName (google.protobuf.Empty)returns (GetBlogControllerAndActionNameResponse);
+}
